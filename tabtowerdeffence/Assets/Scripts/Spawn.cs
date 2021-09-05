@@ -9,10 +9,11 @@ public class Spawn : MonoBehaviour
     public float lastSpawnTime = 0f; 
     public float spawnTime = 3f;
 
+    
+
 
     private void Update()
     {
-
         if(!GameManager.instance.isGameOver && GameManager.instance.isWaveOver && lastSpawnTime <= 0)
         {
             lastSpawnTime = spawnTime;
@@ -24,7 +25,9 @@ public class Spawn : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(enemyPrefabs[GameManager.instance.wave], transform.position, transform.rotation);
+        Instantiate(enemyPrefabs[(GameManager.instance.wave) % 4], transform.position, transform.rotation);
+
+        GameManager.instance.SpawnWave();
     }
 
 }

@@ -22,13 +22,12 @@ public class Enemy : MonoBehaviour
     public Slider healthbar;
     private RectTransform barParentTrans; //bar rect transform
 
+    public GameObject attackEffect;
+
     public enum enemyTypes { Small, Large, None };
     public enemyTypes enemyType;
 
-    public Animation anim;
-    public AnimationClip attackAnim;
-    public AnimationClip walkAnim;
-    public AnimationClip deathAnim;
+    public Animator anim;
     public AudioSource audio;
     public Rigidbody rigid;
     public NavMeshAgent nav;
@@ -37,8 +36,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject Target;
     private GameObject playerObj;
-    private Player player;
-    private Turret turret;
+    public Player player;
 
     private void Start()
     {
@@ -49,7 +47,8 @@ public class Enemy : MonoBehaviour
         player = playerObj.GetComponent<Player>();
 
         nav.speed = moveSpeed;
-        anim.Play(walkAnim.name);
+        isWalk = true;
+        anim.SetBool("Walk", isWalk);
 
         if (healthbar)
             barParentTrans = healthbar.transform.parent.GetComponent<RectTransform>();
@@ -73,10 +72,15 @@ public class Enemy : MonoBehaviour
     {
         audio.clip = attackSound;
         audio.Play();
-        anim.Play(attackAnim.name);
-        yield return new WaitForSeconds(0.3f);
+        anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.25f);
+        attackEffect.SetActive(true);
 
         player.currentHp -= (damage - player.deffence);
+
+        yield return new WaitForSeconds(0.25f);
+
+        attackEffect.SetActive(false);
 
         yield return new WaitForSeconds(delay);
 
@@ -155,7 +159,7 @@ public class Enemy : MonoBehaviour
 
         audio.clip = deadSound;
         audio.Play();
-        anim.Play(deathAnim.name);
+        anim.SetTrigger("Death");
 
         yield return new WaitForSeconds(1.5f);
 
@@ -168,7 +172,7 @@ public class Enemy : MonoBehaviour
         if(other.tag == "playerHp")
         {
             isWalk = false;
-
+            anim.SetBool("Walk", isWalk);
             nav.isStopped = true;
             TryAttack();
         }
@@ -179,7 +183,8 @@ public class Enemy : MonoBehaviour
         if(other.tag == "playerHp")
         {
             nav.isStopped = false;
-            anim.Play(walkAnim.name);
+            isWalk = true;
+            anim.SetBool("Walk", isWalk);
         }
     }
 }
