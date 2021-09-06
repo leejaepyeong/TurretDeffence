@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int wave;
     public int waveCount;
     public int maxWaveCount = 4;
+    public int level = 0;
 
 
     public bool isBossSpawn;
@@ -114,15 +115,20 @@ public class GameManager : MonoBehaviour
     {
         if (waveCount == maxWaveCount || isBossSpawn)
         {
+            waveCount = 0;
             isBossSpawn = false;
             isWaveOver = true;
             wave++;
             if(wave % 5 == 0)
             {
                 isBossSpawn = true;
+                level++;
+
             }
 
             Invoke("StartWave", 15f);
+
+            return;
         }
             
 

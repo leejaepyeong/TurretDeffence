@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float range;
     public float delay;
 
+    public bool isBoss;
     public bool isDead;
     public bool isAttack;
     public bool isWalk = true;
@@ -52,6 +53,9 @@ public class Enemy : MonoBehaviour
 
         if (healthbar)
             barParentTrans = healthbar.transform.parent.GetComponent<RectTransform>();
+
+
+        LevelUp();
     }
 
     void LateUpdate()
@@ -60,6 +64,30 @@ public class Enemy : MonoBehaviour
 
         if (barParentTrans)
             barParentTrans.rotation = rot;
+    }
+
+    public void LevelUp()
+    {
+        if(!isBoss)
+        {
+            MaxHp += 8 * GameManager.instance.level;
+            Hp += 8 * GameManager.instance.level;
+            damage += 2 * GameManager.instance.level;
+            deffence += 1 * GameManager.instance.level;
+
+            return;
+        }
+
+        if(isBoss &&  GameManager.instance.level != 0 && GameManager.instance.level % 4 == 0)
+        {
+            MaxHp += 80 * ((GameManager.instance.level) / 4);
+            Hp += 80 * ((GameManager.instance.level) / 4);
+            damage += 6 * ((GameManager.instance.level) / 4);
+            deffence += 3 * ((GameManager.instance.level) / 4);
+        }
+
+        
+        
     }
 
     void TryAttack()
