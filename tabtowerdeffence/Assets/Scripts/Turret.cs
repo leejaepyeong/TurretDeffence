@@ -20,17 +20,13 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    private void Start()
-    {
-        InvokeRepeating("UpdateTarget",0f,0.5f);
-
-    
-    }
-
 
     // Find Targe
-    void UpdateTarget()
+    void UpdateTarget(GameObject _other)
     {
+        target = _other.transform;
+
+        /*
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearesetEnemy = null;
@@ -54,6 +50,7 @@ public class Turret : MonoBehaviour
         {
             target = null;
         }
+        */
     }
 
     private void Update()
@@ -65,7 +62,7 @@ public class Turret : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f,rotation.y,0f);
 
-        if(fireCountDown <= 0f)
+        if(fireCountDown <= 0f && !target.gameObject.GetComponent<Enemy>().isDead)
         {
             Shoot();
             fireCountDown = fireRate;
@@ -84,6 +81,25 @@ public class Turret : MonoBehaviour
         if (bullet != null)
             bullet.Seek(target);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == enemyTag)
+        {
+
+            if (target == null || target.gameObject.GetComponent<Enemy>().isDead)
+                UpdateTarget(other.gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == enemyTag)
+        {
+            if(target == null || target.gameObject.GetComponent<Enemy>().isDead)
+            UpdateTarget(other.gameObject);
+        }
     }
 
 }

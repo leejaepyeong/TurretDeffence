@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1259534b90a914160928cfc6f1603c0b, type: 3}
+  m_Name: Magic
+  m_EditorClassIdentifier: 
+  upgradeType: 0
+  upgradeCount: 0
+  upgradeCost: 200
+  value: 4
+  upgradeTitle: Magic
+  upgradeInfoTxt: Magic Tower Damage + 1
+  towerInfoTxt: 'Damage : '

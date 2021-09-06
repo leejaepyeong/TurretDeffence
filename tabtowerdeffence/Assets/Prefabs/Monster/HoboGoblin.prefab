@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 20752252}
   - component: {fileID: 20752253}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: HUD Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224007136}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 360505096}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: HUD Position (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1714201811}
   - component: {fileID: 1714201813}
   - component: {fileID: 1714201812}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1773325726}
   - component: {fileID: 1773325727}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 2084352359}
   - component: {fileID: 2084352361}
   - component: {fileID: 2084352360}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15283,7 +15283,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -15336,7 +15336,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -15389,7 +15389,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -15442,7 +15442,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -20011,7 +20011,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -20064,7 +20064,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -20117,7 +20117,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -20170,7 +20170,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -50040,7 +50040,7 @@ GameObject:
   - component: {fileID: 1537200382}
   m_Layer: 6
   m_Name: HoboGoblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50054,7 +50054,7 @@ Transform:
   m_GameObject: {fileID: 7523773697304138215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.39597, y: 5.0017266, z: -26.533163}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7523773697303776709}
   - {fileID: 7523773697303776623}
@@ -50115,7 +50115,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &4021033713243365981
 MonoBehaviour:
@@ -50133,7 +50133,7 @@ MonoBehaviour:
   Hp: 20
   damage: 3
   deffence: 1
-  moveSpeed: 6
+  moveSpeed: 9
   range: 1.5
   delay: 1.9
   isDead: 0
@@ -50149,6 +50149,7 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 33884182fd690454391f505010e57bfb, type: 3}
   deadSound: {fileID: 8300000, guid: 1225b0f997026d64fa600c3fd93f1a74, type: 3}
   Target: {fileID: 0}
+  player: {fileID: 0}
 --- !u!82 &1537200381
 AudioSource:
   m_ObjectHideFlags: 0

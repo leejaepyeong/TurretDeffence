@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,32 +10,21 @@ public class Player : MonoBehaviour
     public float maxHp;
     public float currentHp;
     public int deffence;
-    public int money;
     public bool isDead = false;
 
+    public Image hpBar;
 
 
-    private void Update()
+
+    public void PlayerDeath()
     {
-        if (currentHp <= 0)
-        {
-            isDead = true;
-            GameManager.instance.GameOver();
-        }
-            
-
-
-        if (!isDead)
-        {
-
-        }
-        else
-            return;
-
-
+        isDead = true;
+        GameManager.instance.GameOver();
     }
 
-
-
+    public void HitPlayer()
+    {
+        hpBar.fillAmount = currentHp / maxHp;
+    }
 
 }

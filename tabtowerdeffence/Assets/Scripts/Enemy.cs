@@ -70,13 +70,25 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Attack()
     {
+        isAttack = true;
+
         audio.clip = attackSound;
         audio.Play();
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.25f);
         attackEffect.SetActive(true);
 
-        player.currentHp -= (damage - player.deffence);
+
+        float deal = damage - player.deffence;
+        if (deal <= 0) deal = 1;
+        player.currentHp -= deal;
+
+        player.HitPlayer();
+
+        if (player.currentHp <= 0 && !player.isDead)
+        {
+            player.PlayerDeath();
+        }
 
         yield return new WaitForSeconds(0.25f);
 
@@ -86,7 +98,7 @@ public class Enemy : MonoBehaviour
 
 
 
-        isAttack = true;
+        isAttack = false;
     }
 
     public void Hit(float _damage, string _weaponType)
@@ -156,6 +168,9 @@ public class Enemy : MonoBehaviour
     IEnumerator Dead()
     {
         isDead = true;
+        nav.isStopped = true;
+
+        GameManager.instance.GetGold();
 
         audio.clip = deadSound;
         audio.Play();
@@ -174,6 +189,15 @@ public class Enemy : MonoBehaviour
             isWalk = false;
             anim.SetBool("Walk", isWalk);
             nav.isStopped = true;
+            TryAttack();
+        }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "playerHp")
+        {
             TryAttack();
         }
     }

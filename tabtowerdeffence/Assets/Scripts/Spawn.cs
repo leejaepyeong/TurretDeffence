@@ -5,19 +5,28 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public Enemy[] enemyPrefabs;
+    public Enemy[] bossPrefabs;
+    public Transform[] SpawnPosition;
 
     public float lastSpawnTime = 0f; 
-    public float spawnTime = 3f;
+    public float spawnTime = 5.5f;
 
     
 
-
     private void Update()
     {
-        if(!GameManager.instance.isGameOver && GameManager.instance.isWaveOver && lastSpawnTime <= 0)
+        if(!GameManager.instance.isGameOver && !GameManager.instance.isWaveOver && lastSpawnTime <= 0)
         {
-            lastSpawnTime = spawnTime;
-            SpawnEnemy();
+            if(!GameManager.instance.isBossSpawn)
+            {
+                lastSpawnTime = spawnTime;
+                SpawnEnemy();
+            }
+            else
+            {
+                SpawnBossEnemy();
+            }
+            
         }
 
         lastSpawnTime -= Time.deltaTime;
@@ -25,7 +34,20 @@ public class Spawn : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(enemyPrefabs[(GameManager.instance.wave) % 4], transform.position, transform.rotation);
+        for (int i = 0; i < SpawnPosition.Length; i++)
+        {
+            Instantiate(enemyPrefabs[(GameManager.instance.wave) % 5], SpawnPosition[i].position, SpawnPosition[i].rotation);
+        }
+
+        GameManager.instance.SpawnWave();
+    }
+
+    void SpawnBossEnemy()
+    {
+        for (int i = 0; i < SpawnPosition.Length; i++)
+        {
+            Instantiate(bossPrefabs[((GameManager.instance.wave) / 5 - 1) % 4], SpawnPosition[i].position, SpawnPosition[i].rotation);
+        }
 
         GameManager.instance.SpawnWave();
     }

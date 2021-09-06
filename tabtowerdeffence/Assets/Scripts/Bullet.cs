@@ -7,9 +7,17 @@ public class Bullet : MonoBehaviour
     public float damage;
     public float speed;
 
-    private Transform target;
+    public Transform target;
     public GameObject effectHitPrefab;
     public string weaponeType;
+
+    public UpgradeData upgradeData;
+
+
+    private void Start()
+    {
+        damage = upgradeData.value;
+    }
 
     public void Seek(Transform _target)
     {
@@ -27,26 +35,30 @@ public class Bullet : MonoBehaviour
         Vector3 dir = target.position - gameObject.transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
-
-        // target Hit
-        // target distance = speed * time
-        if(dir.magnitude <= distanceThisFrame)
-        {
-            HitTarget();
-            return;
-        }
-
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+    }
+
+    public void DamageUp()
+    {
+        damage = upgradeData.value;
     }
 
     void HitTarget()
     {
 
         GameObject effectHit = Instantiate(effectHitPrefab, transform.position, transform.rotation);
-        Destroy(effectHit,1f);
+        Destroy(effectHit,0.7f);
 
         target.gameObject.GetComponent<Enemy>().Hit(damage, weaponeType);
 
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == target.gameObject)
+        {
+            HitTarget();
+        }
     }
 }
