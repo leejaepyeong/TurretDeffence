@@ -8,8 +8,8 @@ public class Spawn : MonoBehaviour
     public Enemy[] bossPrefabs;
     public Transform[] SpawnPosition;
 
-    public float lastSpawnTime = 0f; 
-    public float spawnTime = 5.5f;
+    private float lastSpawnTime = 0f; 
+    private float spawnTime = 6f;
 
     
 
@@ -17,7 +17,8 @@ public class Spawn : MonoBehaviour
     {
         if(!GameManager.instance.isGameOver && !GameManager.instance.isWaveOver && lastSpawnTime <= 0)
         {
-            if(!GameManager.instance.isBossSpawn)
+
+            if (!GameManager.instance.isBossSpawn)
             {
                 lastSpawnTime = spawnTime;
                 SpawnEnemy();
@@ -36,9 +37,11 @@ public class Spawn : MonoBehaviour
     {
         for (int i = 0; i < SpawnPosition.Length; i++)
         {
-            Instantiate(enemyPrefabs[(GameManager.instance.wave) % 5], SpawnPosition[i].position, SpawnPosition[i].rotation);
+            Instantiate(enemyPrefabs[(GameManager.instance.wave - 1) % 5], SpawnPosition[i].position, SpawnPosition[i].rotation);
         }
 
+
+        
         GameManager.instance.SpawnWave();
     }
 

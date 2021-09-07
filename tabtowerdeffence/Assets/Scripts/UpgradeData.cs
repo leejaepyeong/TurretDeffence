@@ -10,7 +10,7 @@ public class UpgradeData : ScriptableObject
     public upgradeTypes upgradeType;
 
     public int upgradeCount = 0;
-    public int upgradeCost = 100;
+    public int upgradeCost = 150;
     public float value;
 
 
@@ -22,7 +22,7 @@ public class UpgradeData : ScriptableObject
     public void UpgradeOn()
     {
         upgradeCount++;
-        upgradeCost += 200;
+        upgradeCost += 150;
         value++;
     }
 }

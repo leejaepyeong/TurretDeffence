@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
         damage = upgradeData.value;
     }
 
+    // Find Target
     public void Seek(Transform _target)
     {
         target = _target;
@@ -38,11 +39,13 @@ public class Bullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
     }
 
+    // Turret damage Up by Upgrade
     public void DamageUp()
     {
         damage = upgradeData.value;
     }
 
+    // Damage to Enemy
     void HitTarget()
     {
 
@@ -54,6 +57,8 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    // Hit Enemy
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject == target.gameObject)

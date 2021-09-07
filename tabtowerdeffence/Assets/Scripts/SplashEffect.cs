@@ -12,6 +12,7 @@ public class SplashEffect : MonoBehaviour
         damage = (bullet.damage) / 2 ;
     }
 
+    // Splash Attack
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Enemy")

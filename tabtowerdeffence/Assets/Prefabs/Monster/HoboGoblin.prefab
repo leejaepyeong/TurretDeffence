@@ -50136,6 +50136,7 @@ MonoBehaviour:
   moveSpeed: 9
   range: 1.5
   delay: 1.9
+  isBoss: 0
   isDead: 0
   isAttack: 0
   isWalk: 1
@@ -50148,6 +50149,7 @@ MonoBehaviour:
   nav: {fileID: 1537200382}
   attackSound: {fileID: 8300000, guid: 33884182fd690454391f505010e57bfb, type: 3}
   deadSound: {fileID: 8300000, guid: 1225b0f997026d64fa600c3fd93f1a74, type: 3}
+  image: {fileID: 21300000, guid: 434244cf46a9a4748aacaa2704ac72ab, type: 3}
   Target: {fileID: 0}
   player: {fileID: 0}
 --- !u!82 &1537200381
@@ -50162,7 +50164,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0

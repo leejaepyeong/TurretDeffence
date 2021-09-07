@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour
     public Transform firePoint;
 
 
-    // Find Targe
+    // Find Target
     void UpdateTarget(GameObject _other)
     {
         target = _other.transform;
@@ -71,7 +71,7 @@ public class Turret : MonoBehaviour
         fireCountDown -= Time.deltaTime;
     }
 
-
+    // Shooting
     void Shoot()
     {
         GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -82,6 +82,8 @@ public class Turret : MonoBehaviour
             bullet.Seek(target);
 
     }
+
+    // Find Enemy
 
     private void OnTriggerEnter(Collider other)
     {

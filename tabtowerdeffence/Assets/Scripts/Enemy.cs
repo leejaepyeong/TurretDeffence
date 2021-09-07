@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     public AudioClip attackSound;
     public AudioClip deadSound;
 
+    public Sprite image;
     public GameObject Target;
     private GameObject playerObj;
     public Player player;
@@ -209,7 +210,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    // Find Player
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "playerHp")

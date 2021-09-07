@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 1
   upgradeCount: 0
-  upgradeCost: 200
+  upgradeCost: 150
   value: 0
   upgradeTitle: Deffence
   upgradeInfoTxt: Tower Deffence + 1

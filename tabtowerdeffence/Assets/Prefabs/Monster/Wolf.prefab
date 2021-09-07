@@ -1215,6 +1215,7 @@ MonoBehaviour:
   moveSpeed: 11
   range: 1.5
   delay: 1.5
+  isBoss: 0
   isDead: 0
   isAttack: 0
   isWalk: 1
@@ -1227,6 +1228,7 @@ MonoBehaviour:
   nav: {fileID: 1083808934}
   attackSound: {fileID: 8300000, guid: 33884182fd690454391f505010e57bfb, type: 3}
   deadSound: {fileID: 8300000, guid: e8e89443ba2f4af4aa2a53f659fab3e5, type: 3}
+  image: {fileID: 21300000, guid: 8ff1a5cf0b75044698bc2f08b75cc962, type: 3}
   Target: {fileID: 0}
   player: {fileID: 0}
 --- !u!82 &1083808935

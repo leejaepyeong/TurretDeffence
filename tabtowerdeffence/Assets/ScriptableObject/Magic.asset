@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 0
   upgradeCount: 0
-  upgradeCost: 200
+  upgradeCost: 150
   value: 4
   upgradeTitle: Magic
   upgradeInfoTxt: Magic Tower Damage + 1

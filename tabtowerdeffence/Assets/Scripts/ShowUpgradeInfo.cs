@@ -7,6 +7,8 @@ public class ShowUpgradeInfo : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     public TowerUpgrade towerUpgrade;
 
+
+    // appear turret Information
     public void OnPointerEnter(PointerEventData eventData)
     {
         towerUpgrade.upgradeInfoPanel.SetActive(true);
@@ -16,6 +18,7 @@ public class ShowUpgradeInfo : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     }
 
+    // Disappear turret Information
     public void OnPointerExit(PointerEventData eventData)
     {
         towerUpgrade.upgradeInfoPanel.SetActive(false);

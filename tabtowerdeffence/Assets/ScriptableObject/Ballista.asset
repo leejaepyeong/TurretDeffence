@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 0
   upgradeCount: 0
-  upgradeCost: 200
+  upgradeCost: 150
   value: 5
   upgradeTitle: Ballista
   upgradeInfoTxt: Ballista Tower Damage + 1

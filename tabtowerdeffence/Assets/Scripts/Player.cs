@@ -13,15 +13,24 @@ public class Player : MonoBehaviour
     public bool isDead = false;
 
     public Image hpBar;
+    public GameObject Castle;
+    public GameObject destroyEffect;
 
 
-
+    // Player Death
     public void PlayerDeath()
     {
         isDead = true;
         GameManager.instance.GameOver();
+
+
+        destroyEffect.SetActive(true);
+        Destroy(Castle, 2.5f);
+
     }
 
+
+    // Enemy Attack Player
     public void HitPlayer()
     {
         hpBar.fillAmount = currentHp / maxHp;
