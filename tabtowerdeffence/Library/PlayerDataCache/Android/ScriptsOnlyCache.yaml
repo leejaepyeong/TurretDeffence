@@ -1992,4 +1992,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Title.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/Help.unity
-  playerPath: /Users/mr13/Desktop/towerdeffence.apk
+  playerPath: /Users/mr13/Desktop/LJP_UNITY/APK/kingdom_deffence.aab
